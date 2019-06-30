@@ -1,3 +1,4 @@
+import itertools
 import re
 
 from graphviz import Digraph
@@ -50,15 +51,30 @@ def add_edge(graph, first_node, second_node, explanation, linked=False, unusual=
 
 def build_graph():
     dot = Digraph(comment = 'Gloomhaven Scenarios')
-    #dot.graph_attr['rankdir'] = 'LR'
+    dot.attr(newrank = 'true')
 
-    scenarios = [1, 2, 3, 4, 5, 6, 7, 8, 9,
-                 13, 14, 16, 18, 19,
-                 20, 24, 25, 26, 28,
-                 30, 31, 32, 33, 34, 37,
-                 43,
-                 64, 68,
-                 82]
+    scenario_blocks = [{'name': 'jekserah',
+                        'desc': 'Jekserah the Valrath merchant',
+                        'scenarios': [1, 2, 3, 8, 9, 7, 13, 14, 20, 28]},
+                       {'name': 'hail',
+                        'desc': 'Hail the Aesther Enchantress',
+                        'scenarios': [19, 31, 43, 26, 37]},
+                       {'name': 'gloom',
+                        'desc': 'The Gloom',
+                        'scenarios': [4, 5, 6]},
+                       {'name': 'voice',
+                        'desc': 'The Voice',
+                        'scenarios': [24, 32, 30]},
+                       {'name': 'drake',
+                        'desc': 'The Drake',
+                        'scenarios': [16, 25, 33, 34]},
+                       {'name': 'help',
+                        'desc': 'Help the Captain of the Guards',
+                        'scenarios': [18]}
+                       ]
+    other_scenarios = [64, 68, 82]
+
+    scenarios = other_scenarios + list(itertools.chain.from_iterable([d['scenarios'] for d in scenario_blocks]))
 
     scenario_names, coordinate_labels = build_labels()
 
@@ -86,7 +102,24 @@ def build_graph():
         '4': '<TR><TD><b><FONT COLOR="#BF111D">Completed 30/6/19</FONT></b></TD></TR>',
     })
 
-    for i in scenarios:
+    for block in scenario_blocks:
+        with dot.subgraph(name=f"cluster_{block['name']}") as cluster:
+            cluster.attr(label=block['desc'], fontsize='40')
+            for i in block['scenarios']:
+                label = f"""<<TABLE BORDER="0">
+                            <TR><TD><IMG SCALE="TRUE" SRC="locations/location_{i}.png"/></TD></TR>
+                            <TR><TD><b>{scenario_names[str(i)]}</b></TD></TR>
+                            <TR><TD><b>{coordinate_labels[str(i)]}</b></TD></TR>
+                            {completion_dict[str(i)]}
+                            </TABLE>>"""
+                print(label)
+                cluster.node(name=str(i),
+                         label=label,
+                         fontname='times',
+                         fontsize='30',
+                         penwidth='0')
+
+    for i in other_scenarios:
         label = f"""<<TABLE BORDER="0">
                     <TR><TD><IMG SCALE="TRUE" SRC="locations/location_{i}.png"/></TD></TR>
                     <TR><TD><b>{scenario_names[str(i)]}</b></TD></TR>
@@ -103,6 +136,7 @@ def build_graph():
     dot.edge_attr = {'penwidth': '5',
                      'arrowhead': 'normal',
                      'fontsize':'25',
+                     'weight': '10',
                      'fontname':'times'}
 
     # dot.edge('1', '1to2', arrowhead='none')
