@@ -58,13 +58,13 @@ def build_graph():
                         'scenarios': [1, 2, 3, 8, 9, 7, 13, 14, 20, 28]},
                        {'name': 'hail',
                         'desc': 'Hail the Aesther Enchantress',
-                        'scenarios': [19, 31, 43, 26, 37]},
+                        'scenarios': [19, 31, 43, 26, 37, 47]},
                        {'name': 'gloom',
                         'desc': 'The Gloom',
-                        'scenarios': [4, 5, 6]},
+                        'scenarios': [4, 5, 6, 10, 21, 22, 51]},
                        {'name': 'voice',
                         'desc': 'The Voice',
-                        'scenarios': [24, 32, 30]},
+                        'scenarios': [24, 32, 30, 33, 40, 41]},
                        {'name': 'drake',
                         'desc': 'The Drake',
                         'scenarios': [16, 25, 33, 34]},
@@ -72,7 +72,7 @@ def build_graph():
                         'desc': 'Help the Captain of the Guards',
                         'scenarios': [18]}
                        ]
-    other_scenarios = [64, 68, 82]
+    other_scenarios = [17, 61, 64, 68, 82]
 
     scenarios = other_scenarios + list(itertools.chain.from_iterable([d['scenarios'] for d in scenario_blocks]))
 
@@ -100,6 +100,18 @@ def build_graph():
         '25': '<TR><TD><b><FONT COLOR="#BF111D">Completed 27/6/19</FONT></b></TD></TR>',
         '34': '<TR><TD><b><FONT COLOR="#BF111D">Completed 29/6/19</FONT></b></TD></TR>',
         '4': '<TR><TD><b><FONT COLOR="#BF111D">Completed 30/6/19</FONT></b></TD></TR>',
+        '5': '<TR><TD><b><FONT COLOR="#BF111D">Completed 7/7/19</FONT></b></TD></TR>',
+        '10': '<TR><TD><b><FONT COLOR="#BF111D">Completed 14/7/19</FONT></b></TD></TR>',
+        '21': '<TR><TD><b><FONT COLOR="#BF111D">Completed 31/7/19</FONT></b></TD></TR>',
+        '68': '<TR><TD><b><FONT COLOR="#BF111D">Completed 18/9/19</FONT></b></TD></TR>',
+        '32': '<TR><TD><b><FONT COLOR="#BF111D">Completed 21/9/19</FONT></b></TD></TR>',
+        '33': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 30/9/19</FONT></b></TD></TR>'
+              '<TR><TD><b><FONT COLOR="#BF111D">Completed 6/10/19</FONT></b></TD></TR>',
+        '40': '<TR><TD><b><FONT COLOR="#BF111D">Completed 9/11/19</FONT></b></TD></TR>',
+        '41': '<TR><TD><b><FONT COLOR="#BF111D">Completed 16/11/19</FONT></b></TD></TR>',
+        '37': '<TR><TD><b><FONT COLOR="#BF111D">Completed 14/12/19</FONT></b></TD></TR>',
+        '47': '<TR><TD><b><FONT COLOR="#BF111D">Completed 11/01/19</FONT></b></TD></TR>'
+              '<TR><TD><i><FONT COLOR="#BF111D">Chest left</FONT></i></TD></TR>',
     })
 
     for block in scenario_blocks:
@@ -173,8 +185,21 @@ def build_graph():
     add_edge(dot, 25, 33, "Help the Drake")
     add_edge(dot, 4, 5, "Disrupt cult")
     add_edge(dot, 4, 6, "Help cult")
+    add_edge(dot, 5, 10, "Enter the void", linked=True)
+    add_edge(dot, 5, 14, "Close the void")
+    add_edge(dot, 5, 19, "Close the void")
+    add_edge(dot, 10, 21, "Fight the Demon", linked=True)
+    add_edge(dot, 10, 22, "Find artifact")
+    add_edge(dot, 32, 61, "Pyper's Personal Quest")
+    add_edge(dot, 32, 33, "Find vessel")
+    add_edge(dot, 32, 40, "Find vessel")
+    add_edge(dot, 40, 41, "Continue", linked=True)
+    add_edge(dot, 37, 47, "Continue", linked=True)
+    add_edge(dot, 37, 17, "Chest loot", unusual=True)
+    add_edge(dot, 47, 51, "End corruption")
 
     dot.render('locations_route.gv', view=True)
+
 
 if __name__ == "__main__":
     build_graph()
