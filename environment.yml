@@ -1,0 +1,7 @@
+name: graphics
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - graphviz
+  - python-graphviz

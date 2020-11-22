@@ -1,4 +1,5 @@
 import itertools
+import os
 import re
 
 from graphviz import Digraph
@@ -123,8 +124,10 @@ def build_graph():
         with dot.subgraph(name=f"cluster_{block['name']}") as cluster:
             cluster.attr(label=block['desc'], fontsize='40')
             for i in block['scenarios']:
+                image_file = f"locations/location_{i}.png"
+                assert os.path.isfile(image_file), f"Expected image file {image_file}"
                 label = f"""<<TABLE BORDER="0">
-                            <TR><TD><IMG SCALE="TRUE" SRC="locations/location_{i}.png"/></TD></TR>
+                            <TR><TD><IMG SCALE="TRUE" SRC="{image_file}"/></TD></TR>
                             <TR><TD><b>{scenario_names[str(i)]}</b></TD></TR>
                             <TR><TD><b>{coordinate_labels[str(i)]}</b></TD></TR>
                             {completion_dict[str(i)]}
@@ -137,8 +140,10 @@ def build_graph():
                          penwidth='0')
 
     for i in other_scenarios:
+        image_file = f"locations/location_{i}.png"
+        assert os.path.isfile(image_file), f"Expected image file {image_file}"
         label = f"""<<TABLE BORDER="0">
-                    <TR><TD><IMG SCALE="TRUE" SRC="locations/location_{i}.png"/></TD></TR>
+                    <TR><TD><IMG SCALE="TRUE" SRC="{image_file}"/></TD></TR>
                     <TR><TD><b>{scenario_names[str(i)]}</b></TD></TR>
                     <TR><TD><b>{coordinate_labels[str(i)]}</b></TD></TR>
                     {completion_dict[str(i)]}
