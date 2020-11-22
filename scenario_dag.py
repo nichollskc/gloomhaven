@@ -62,7 +62,7 @@ def build_graph():
                         'scenarios': [19, 31, 43, 26, 37, 47]},
                        {'name': 'gloom',
                         'desc': 'The Gloom',
-                        'scenarios': [4, 5, 6, 10, 21, 22, 35, 36, 38, 39, 51]},
+                        'scenarios': [4, 5, 6, 10, 21, 22, 35, 36, 39, 51]},
                        {'name': 'voice',
                         'desc': 'The Voice',
                         'scenarios': [24, 32, 30, 33, 40, 41]},
@@ -71,7 +71,10 @@ def build_graph():
                         'scenarios': [16, 25, 33, 34]},
                        {'name': 'help',
                         'desc': 'Help the Captain of the Guards',
-                        'scenarios': [18]}
+                        'scenarios': [18]},
+                       {'name': 'Orchids',
+                        'desc': 'Help the Orchids',
+                        'scenarios': [38, 44, 48]},
                        ]
     other_scenarios = [15, 17, 61, 64, 68, 71, 82]
 
@@ -118,6 +121,12 @@ def build_graph():
         '15': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 01/02/20</FONT></b></TD></TR>',
         '22': '<TR><TD><b><FONT COLOR="#BF111D">Completed 15/02/20</FONT></b></TD></TR>',
         '31': '<TR><TD><b><FONT COLOR="#BF111D">Completed 16/02/20</FONT></b></TD></TR>',
+        '38': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 23/02/20</FONT></b></TD></TR>'
+              '<TR><TD><b><FONT COLOR="#BF111D">Completed 01/03/20</FONT></b></TD></TR>',
+        '44': '<TR><TD><b><FONT COLOR="#BF111D">Completed 08/03/20</FONT></b></TD></TR>',
+        # Unsure of dates for these two
+        '48': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 16/03/20</FONT></b></TD></TR>'
+              '<TR><TD><b><FONT COLOR="#BF111D">Completed 23/03/20</FONT></b></TD></TR>',
     })
 
     for block in scenario_blocks:
@@ -214,6 +223,8 @@ def build_graph():
     add_edge(dot, 22, 31, "Artifact to Hail")
     add_edge(dot, 31, 38, "Find evil")
     add_edge(dot, 31, 39, "Find evil")
+    add_edge(dot, 38, 44, "Help Orchid village")
+    add_edge(dot, 38, 48, "Find evil in forest")
 
     dot.render('Gloomhaven_scenario_route.gv', view=True)
 
