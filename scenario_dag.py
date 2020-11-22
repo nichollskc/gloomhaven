@@ -124,9 +124,9 @@ def build_graph():
         '38': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 23/02/20</FONT></b></TD></TR>'
               '<TR><TD><b><FONT COLOR="#BF111D">Completed 01/03/20</FONT></b></TD></TR>',
         '44': '<TR><TD><b><FONT COLOR="#BF111D">Completed 08/03/20</FONT></b></TD></TR>',
-        # Unsure of dates for these two
-        '48': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 16/03/20</FONT></b></TD></TR>'
-              '<TR><TD><b><FONT COLOR="#BF111D">Completed 23/03/20</FONT></b></TD></TR>',
+        '48': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 14/03/20</FONT></b></TD></TR>'
+              '<TR><TD><b><FONT COLOR="#BF111D">Completed 21/03/20</FONT></b></TD></TR>',
+        '39': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 22/11/20</FONT></b></TD></TR>',
     })
 
     for block in scenario_blocks:
