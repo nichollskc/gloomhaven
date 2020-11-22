@@ -61,7 +61,7 @@ def build_graph():
                         'scenarios': [19, 31, 43, 26, 37, 47]},
                        {'name': 'gloom',
                         'desc': 'The Gloom',
-                        'scenarios': [4, 5, 6, 10, 21, 22, 51]},
+                        'scenarios': [4, 5, 6, 10, 21, 22, 35, 36, 38, 39, 51]},
                        {'name': 'voice',
                         'desc': 'The Voice',
                         'scenarios': [24, 32, 30, 33, 40, 41]},
@@ -72,7 +72,7 @@ def build_graph():
                         'desc': 'Help the Captain of the Guards',
                         'scenarios': [18]}
                        ]
-    other_scenarios = [17, 61, 64, 68, 82]
+    other_scenarios = [15, 17, 61, 64, 68, 71, 82]
 
     scenarios = other_scenarios + list(itertools.chain.from_iterable([d['scenarios'] for d in scenario_blocks]))
 
@@ -110,8 +110,13 @@ def build_graph():
         '40': '<TR><TD><b><FONT COLOR="#BF111D">Completed 9/11/19</FONT></b></TD></TR>',
         '41': '<TR><TD><b><FONT COLOR="#BF111D">Completed 16/11/19</FONT></b></TD></TR>',
         '37': '<TR><TD><b><FONT COLOR="#BF111D">Completed 14/12/19</FONT></b></TD></TR>',
-        '47': '<TR><TD><b><FONT COLOR="#BF111D">Completed 11/01/19</FONT></b></TD></TR>'
+        '47': '<TR><TD><b><FONT COLOR="#BF111D">Completed 11/01/20</FONT></b></TD></TR>'
               '<TR><TD><i><FONT COLOR="#BF111D">Chest left</FONT></i></TD></TR>',
+        '17': '<TR><TD><b><FONT COLOR="#BF111D">Completed 12/01/20</FONT></b></TD></TR>',
+        '13': '<TR><TD><b><FONT COLOR="#BF111D">Completed 16/01/20</FONT></b></TD></TR>',
+        '15': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 01/02/20</FONT></b></TD></TR>',
+        '22': '<TR><TD><b><FONT COLOR="#BF111D">Completed 15/02/20</FONT></b></TD></TR>',
+        '31': '<TR><TD><b><FONT COLOR="#BF111D">Completed 16/02/20</FONT></b></TD></TR>',
     })
 
     for block in scenario_blocks:
@@ -197,8 +202,15 @@ def build_graph():
     add_edge(dot, 37, 47, "Continue", linked=True)
     add_edge(dot, 37, 17, "Chest loot", unusual=True)
     add_edge(dot, 47, 51, "End corruption")
+    add_edge(dot, 17, 71, "Chest loot", unusual=True)
+    add_edge(dot, 13, 15, "Gain power")
+    add_edge(dot, 22, 35, "Fight for evil")
+    add_edge(dot, 22, 36, "Fight against evil")
+    add_edge(dot, 22, 31, "Artifact to Hail")
+    add_edge(dot, 31, 38, "Find evil")
+    add_edge(dot, 31, 39, "Find evil")
 
-    dot.render('locations_route.gv', view=True)
+    dot.render('Gloomhaven_scenario_route.gv', view=True)
 
 
 if __name__ == "__main__":
