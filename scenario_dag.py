@@ -127,6 +127,7 @@ def build_graph():
         '48': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 14/03/20</FONT></b></TD></TR>'
               '<TR><TD><b><FONT COLOR="#BF111D">Completed 21/03/20</FONT></b></TD></TR>',
         '39': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 22/11/20</FONT></b></TD></TR>',
+        '64': '<TR><TD><b><FONT COLOR="#BF111D">Completed 20/12/20</FONT></b></TD></TR>',
     })
 
     for block in scenario_blocks:
