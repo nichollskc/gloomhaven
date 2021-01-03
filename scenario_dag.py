@@ -111,6 +111,8 @@ def build_graph():
               '<TR><TD><b><FONT COLOR="#BF111D">Completed 21/03/20</FONT></b></TD></TR>',
         '39': '<TR><TD><b><FONT COLOR="#A9A9A9">Attempted 22/11/20</FONT></b></TD></TR>',
         '64': '<TR><TD><b><FONT COLOR="#BF111D">Completed 20/12/20</FONT></b></TD></TR>',
+        '61': '<TR><TD><b><FONT COLOR="#BF111D">Completed 24/12/20</FONT></b></TD></TR>',
+        '62': '<TR><TD><b><FONT COLOR="#BF111D">Completed 26/12/20</FONT></b></TD></TR>',
     })
 
     for name, block in scenario_blocks.items():
@@ -209,6 +211,10 @@ def build_graph():
     add_edge(dot, 31, 39, "Find evil")
     add_edge(dot, 38, 44, "Help Orchid village")
     add_edge(dot, 38, 48, "Find evil in forest")
+    add_edge(dot, 48, 51, "End corruption")
+    add_edge(dot, 61, 74, "City event", unusual=True)
+    add_edge(dot, 61, 62, "Lighthouse basement", linked=True)
+    add_edge(dot, 62, 72, "Town records", unusual=True)
 
     dot.render('Gloomhaven_scenario_route.gv', view=True)
 
