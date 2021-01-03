@@ -1,0 +1,25 @@
+scenario_clusters:
+  "jekserah":
+    description: "Jekserah the Valrath merchant"
+    scenarios: [1, 2, 3, 8, 9, 7, 13, 14, 20, 28]
+  "hail":
+    description: "Hail the Aesther Enchantress"
+    scenarios: [19, 31, 43, 26, 37, 47]
+  "gloom":
+    description: "The Gloom"
+    scenarios: [4, 5, 6, 10, 21, 22, 35, 36, 39, 51]
+  "voice":
+    description: "The Voice"
+    scenarios: [24, 32, 30, 33, 40, 41]
+  "drake":
+    description: "The Drake"
+    scenarios: [16, 25, 33, 34]
+  "pyper":
+    description: "Pyper's personal quest"
+    scenarios: [61, 62]
+  "help":
+    description: "Help the Captain of the Guards"
+    scenarios: [18]
+  "Orchids":
+    description: "Help the Orchids"
+    scenarios: [38, 44, 48]

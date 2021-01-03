@@ -1,6 +1,7 @@
 import itertools
 import os
 import re
+import yaml
 
 from graphviz import Digraph
 
@@ -54,31 +55,13 @@ def build_graph():
     dot = Digraph(comment = 'Gloomhaven Scenarios')
     dot.attr(newrank = 'true')
 
-    scenario_blocks = [{'name': 'jekserah',
-                        'desc': 'Jekserah the Valrath merchant',
-                        'scenarios': [1, 2, 3, 8, 9, 7, 13, 14, 20, 28]},
-                       {'name': 'hail',
-                        'desc': 'Hail the Aesther Enchantress',
-                        'scenarios': [19, 31, 43, 26, 37, 47]},
-                       {'name': 'gloom',
-                        'desc': 'The Gloom',
-                        'scenarios': [4, 5, 6, 10, 21, 22, 35, 36, 39, 51]},
-                       {'name': 'voice',
-                        'desc': 'The Voice',
-                        'scenarios': [24, 32, 30, 33, 40, 41]},
-                       {'name': 'drake',
-                        'desc': 'The Drake',
-                        'scenarios': [16, 25, 33, 34]},
-                       {'name': 'help',
-                        'desc': 'Help the Captain of the Guards',
-                        'scenarios': [18]},
-                       {'name': 'Orchids',
-                        'desc': 'Help the Orchids',
-                        'scenarios': [38, 44, 48]},
-                       ]
-    other_scenarios = [15, 17, 61, 64, 68, 71, 82]
+    with open("scenario_info.yml", "r") as f:
+        scenario_info = yaml.load(f, Loader=yaml.FullLoader)
 
-    scenarios = other_scenarios + list(itertools.chain.from_iterable([d['scenarios'] for d in scenario_blocks]))
+    scenario_blocks = scenario_info["scenario_clusters"]
+    other_scenarios = [15, 17, 64, 68, 71, 72, 74, 82]
+
+    scenarios = other_scenarios + list(itertools.chain.from_iterable([d['scenarios'] for d in scenario_blocks.values()]))
 
     scenario_names, coordinate_labels = build_labels()
 
@@ -130,9 +113,9 @@ def build_graph():
         '64': '<TR><TD><b><FONT COLOR="#BF111D">Completed 20/12/20</FONT></b></TD></TR>',
     })
 
-    for block in scenario_blocks:
-        with dot.subgraph(name=f"cluster_{block['name']}") as cluster:
-            cluster.attr(label=block['desc'], fontsize='40')
+    for name, block in scenario_blocks.items():
+        with dot.subgraph(name=f"cluster_{name}") as cluster:
+            cluster.attr(label=block['description'], fontsize='40')
             for i in block['scenarios']:
                 image_file = f"locations/location_{i}.png"
                 assert os.path.isfile(image_file), f"Expected image file {image_file}"
