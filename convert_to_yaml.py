@@ -1,4 +1,3 @@
-from collections import OrderedDict
 import re
 import yaml
 
@@ -52,10 +51,10 @@ def convert_completion_dict_yaml():
         '62': '<TR><TD><b><FONT COLOR="#BF111D">Completed 26/12/20</FONT></b></TD></TR>',
     }
 
-    all_attempts = OrderedDict()
+    all_attempts = {}
     for scenario_num, attempt_info in completion_dict.items():
         print(attempt_info)
-        attempts = re.findall(r'COLOR="#[\w]{6}">(\w+) (\d+/\d+/\d\d)', attempt_info)
+        attempts = re.findall(r'COLOR="#[\w]{6}">(\w+) (\d+)/(\d+)/(\d\d)', attempt_info)
         loot_left = re.findall(r'COLOR="#[\w]{6}">([\w ]+ left)', attempt_info)
 
         for attempt in attempts:
@@ -65,7 +64,14 @@ def convert_completion_dict_yaml():
             }
             if attempt[0] != "Completed":
                 attempt_dict["failure"] = True
-            attempt_date = attempt[1]
+            day = attempt[1]
+            if len(day) == 1:
+                day = "0" + day
+            month = attempt[2]
+            if len(month) == 1:
+                month = "0" + month
+            year = "20" + attempt[3]
+            attempt_date = f"{year}/{month}/{day}"
             all_attempts[attempt_date] = attempt_dict
 
     print(all_attempts)
