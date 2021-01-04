@@ -268,3 +268,11 @@ attempts:
         description: Town records
         unusual: true
     scenario: 62
+  2021/01/03:
+    scenario: 74
+  2021/01/04:
+    scenario: 71
+    links:
+      '78':
+        description: Secret society
+        unusual: true
