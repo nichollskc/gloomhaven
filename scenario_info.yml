@@ -23,3 +23,248 @@ scenario_clusters:
   "Orchids":
     description: "Help the Orchids"
     scenarios: [38, 44, 48]
+
+attempts:
+  2019/02/13:
+    links:
+      '2':
+        description: Continue
+        linked: true
+      '68':
+        description: Chest loot
+        unusual: true
+    scenario: 1
+  2019/02/14:
+    links:
+      '3':
+        description: Help Jekserah
+      '4':
+        description: Investigate Gloom
+    loot_left: Side rooms left
+    scenario: 2
+  2019/02/15:
+    failure: true
+    scenario: 3
+  2019/02/16:
+    links:
+      '8':
+        description: Help Jekserah
+      '82':
+        description: Road event
+        unusual: true
+      '9':
+        description: Spy on Jekserah
+    loot_left: Side rooms left
+    scenario: 3
+  2019/02/17:
+    links:
+      '13':
+        description: Ask enchanter for help
+      '14':
+        description: Ask enchanter for help
+      '7':
+        description: Spy on Jekserah
+    loot_left: Chest left
+    scenario: 8
+  2019/02/19:
+    scenario: 82
+  2019/03/02:
+    links:
+      '19':
+        description: Help from Hail
+      '31':
+        description: Help from Hail
+      '43':
+        description: Help from Hail
+      '7':
+        description: Help from Hail
+    scenario: 14
+  2019/03/09:
+    links:
+      '26':
+        description: Use water-breathing
+      '37':
+        description: Use water-breathing
+    loot_left: Side rooms left
+    scenario: 43
+  2019/03/23:
+    links:
+      '20':
+        description: Fight Jekserah
+    scenario: 7
+  2019/04/07:
+    links:
+      '16':
+        description: Help Captain
+      '18':
+        description: Help Captain
+      '28':
+        description: Jekserah's warning
+    scenario: 20
+  2019/05/25:
+    links:
+      '24':
+        description: Follow the Voice
+      '25':
+        description: Continue ascent
+        linked: true
+    scenario: 16
+  2019/06/09:
+    failure: true
+    scenario: 24
+  2019/06/23:
+    links:
+      '30':
+        description: Investigate the Voice
+      '32':
+        description: Help the Voice
+      '64':
+        description: Chest loot
+        unusual: true
+    scenario: 24
+  2019/06/27:
+    links:
+      '33':
+        description: Help the Drake
+      '34':
+        description: Fight the Drake
+        linked: true
+    scenario: 25
+  2019/06/29:
+    scenario: 34
+  2019/06/30:
+    links:
+      '5':
+        description: Disrupt cult
+      '6':
+        description: Help cult
+    scenario: 4
+  2019/07/07:
+    links:
+      '10':
+        description: Enter the void
+        linked: true
+      '14':
+        description: Close the void
+      '19':
+        description: Close the void
+    scenario: 5
+  2019/07/14:
+    links:
+      '21':
+        description: Fight the Demon
+        linked: true
+      '22':
+        description: Find artifact
+    scenario: 10
+  2019/07/31:
+    scenario: 21
+  2019/09/18:
+    scenario: 68
+  2019/09/21:
+    links:
+      '33':
+        description: Find vessel
+      '40':
+        description: Find vessel
+      '61':
+        description: Pyper's Personal Quest
+    scenario: 32
+  2019/09/30:
+    failure: true
+    scenario: 33
+  2019/10/06:
+    scenario: 33
+  2019/11/09:
+    links:
+      '41':
+        description: Continue
+        linked: true
+    scenario: 40
+  2019/11/16:
+    scenario: 41
+  2019/12/14:
+    links:
+      '17':
+        description: Chest loot
+        unusual: true
+      '47':
+        description: Continue
+        linked: true
+    scenario: 37
+  2020/01/11:
+    links:
+      '51':
+        description: End corruption
+    loot_left: Chest left
+    scenario: 47
+  2020/01/12:
+    links:
+      '71':
+        description: Chest loot
+        unusual: true
+    scenario: 17
+  2020/01/16:
+    links:
+      '15':
+        description: Gain power
+    scenario: 13
+  2020/02/01:
+    failure: true
+    scenario: 15
+  2020/02/15:
+    links:
+      '31':
+        description: Artifact to Hail
+      '35':
+        description: Fight for evil
+      '36':
+        description: Fight against evil
+    scenario: 22
+  2020/02/16:
+    links:
+      '38':
+        description: Find evil
+      '39':
+        description: Find evil
+    scenario: 31
+  2020/02/23:
+    failure: true
+    scenario: 38
+  2020/03/01:
+    links:
+      '44':
+        description: Help Orchid village
+      '48':
+        description: Find evil in forest
+    scenario: 38
+  2020/03/08:
+    scenario: 44
+  2020/03/14:
+    failure: true
+    scenario: 48
+  2020/03/21:
+    links:
+      '51':
+        description: End corruption
+    scenario: 48
+  2020/11/22:
+    failure: true
+    scenario: 39
+  2020/12/20:
+    scenario: 64
+  2020/12/24:
+    links:
+      '62':
+        description: Lighthouse basement
+        linked: true
+      '74':
+        description: City event
+        unusual: true
+    scenario: 61
+  2020/12/26:
+    links:
+      '72':
+        description: Town records
+        unusual: true
+    scenario: 62
