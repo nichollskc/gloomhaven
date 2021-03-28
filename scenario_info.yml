@@ -7,7 +7,7 @@ scenario_clusters:
     scenarios: [19, 31, 43, 26, 37, 47]
   "gloom":
     description: "The Gloom"
-    scenarios: [4, 5, 6, 10, 21, 22, 35, 36, 39, 51]
+    scenarios: [4, 5, 6, 10, 21, 22, 35, 36, 39]
   "voice":
     description: "The Voice"
     scenarios: [24, 32, 30, 33, 40, 41]
@@ -274,5 +274,27 @@ attempts:
     scenario: 71
     links:
       '78':
-        description: Secret society
+        description: City event (secret society)
+        unusual: true
+  2021/03/07:
+    scenario: 72
+    links:
+      '94':
+        description: "City event #78"
+        unusual: true
+  2021/03/21:
+    scenario: 15
+  2021/03/27:
+    scenario: 39
+    links:
+      '46':
+        description: "Across the divide"
+        linked: true
+  2021/03/28:
+    scenario: 46
+    links:
+      '51':
+        description: "End corruption"
+      '76':
+        description: "We felt we deserved it"
         unusual: true

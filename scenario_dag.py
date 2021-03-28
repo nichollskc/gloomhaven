@@ -49,8 +49,11 @@ def build_graph():
     all_open_scenarios = set()
     all_labelled_scenarios = set()
     scenario_labels = {}
+    completed_scenarios = set()
     for date, attempt in scenario_info["attempts"].items():
         scenario_num = str(attempt["scenario"])
+        if not attempt.get("failure", False):
+            completed_scenarios.add(scenario_num)
 
         try:
             existing_label = scenario_labels[scenario_num]
@@ -77,6 +80,7 @@ def build_graph():
 
     scenario_names, coordinate_labels = build_labels()
 
+    unreachable_scenarios = set(['9', '35', '36'])
     for name, block in scenario_blocks.items():
         with dot.subgraph(name=f"cluster_{name}") as cluster:
             cluster.attr(label=block['description'], fontsize='40')
@@ -92,12 +96,19 @@ def build_graph():
                             {scenario_labels[str(i)]}
                             </TABLE>>"""
                 print(label)
+                if str(i) not in unreachable_scenarios and str(i) not in completed_scenarios:
+                    kwargs = {'penwidth': '15',
+                              'shape': 'circle',
+                              'color': 'cornflowerblue'}
+                else:
+                    kwargs = {'penwidth': '0'}
                 cluster.node(name=str(i),
                          label=label,
                          fontname='times',
                          fontsize='30',
-                         penwidth='0')
+                         **kwargs)
 
+    print("Completed scenarios list", completed_scenarios)
     for i in all_open_scenarios.difference(included_in_cluster):
         image_file = f"locations/location_{i}.png"
         assert os.path.isfile(image_file), f"Expected image file {image_file}"
@@ -108,11 +119,17 @@ def build_graph():
                     {scenario_labels[str(i)]}
                     </TABLE>>"""
         print(label)
+        if i not in unreachable_scenarios and i not in completed_scenarios:
+            kwargs = {'penwidth': '15',
+                      'shape': 'circle',
+                      'color': 'cornflowerblue'}
+        else:
+            kwargs = {'penwidth': '0'}
         dot.node(name=str(i),
                  label=label,
                  fontname='times',
                  fontsize='30',
-                 penwidth='0')
+                 **kwargs)
 
     dot.edge_attr = {'penwidth': '5',
                      'arrowhead': 'normal',
@@ -132,6 +149,9 @@ def build_graph():
                      unusual=link_info.get("unusual", False))
 
     dot.render('Gloomhaven_scenario_route.gv', view=True)
+
+    print("All scenarios open:", sorted([int(i) for i in all_open_scenarios]))
+    print("All scenarios complete:", sorted([int(i) for i in completed_scenarios]))
 
 
 if __name__ == "__main__":
