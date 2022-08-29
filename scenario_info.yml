@@ -298,3 +298,12 @@ attempts:
       '76':
         description: "We felt we deserved it"
         unusual: true
+  2021/04/10:
+    scenario: 76
+    links:
+      '87':
+        description: "City event (helped Vermling)"
+        unusual: true
+      '69':
+        description: "Pan retired"
+        unusual: true
