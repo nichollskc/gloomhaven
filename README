@@ -1,0 +1,19 @@
+! Gloomhaven scenario graph
+
+This project allows you to create a graph showing how the scenarios you have played in Gloomhaven fit together.
+
+After playing a scenario, update the details in scenario_dag.py:
+
+* Add the scenario to the 'completion_dict' with details of completion date etc.
+* Add any unlocked scenarios to 'scenarios' either in one of the scenario blocks or to the `other_scenarios` list.
+* Add edges to link the completed scenario to unlocked scenarios using the `add_edge` function
+
+Then run the script to create and open the graph:
+
+`python scenario_dag.py`
+
+This will require certain packages to be available. I have set up a conda environment with them, called `graphics` so you can use:
+
+`conda activate graphics`
+
+After taking screenshots of the images and storing them in separate files `locations/raw/locations_<i>.png`, you can resize them using the script `locations/alter_images.sh`.
